@@ -12,14 +12,14 @@ import java.util.Objects;
 
 @RestController
 public class GreetingTestController {
-    
+
     @GetMapping("/hello")
     public Map<String, String> hello() {
         return Map.of("message", "hello world");
     }
 
     @GetMapping("/Greeting")
-    public String test(
+    public Map<String, String> test(
             @RequestParam(name = "country", value = "country", defaultValue = "none", required = false) String country,
             @RequestParam(name = "name", value = "name", defaultValue = "none", required = false) String name) {
 
@@ -38,9 +38,9 @@ public class GreetingTestController {
             greeting = "Guten tag!";
         }
 
-        return "Country: " + country +
-                "\nDate/Time: " + dateTime.format(timeFormatter) +
-                "\nGreeting: " + greeting + "\s" + name;
+
+        return Map.of("Greeting:", greeting + "\s" + name, "Country:", country, "Date/Time:", dateTime.format(timeFormatter));
+
     }
 
 }
