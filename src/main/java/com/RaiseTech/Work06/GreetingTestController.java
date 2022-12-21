@@ -18,7 +18,7 @@ public class GreetingTestController {
         return Map.of("message", "hello world");
     }
 
-    @GetMapping("/Greeting")
+    @GetMapping("/greeting")
     public Map<String, String> test(
             @RequestParam(name = "country", value = "country", defaultValue = "none", required = false) String country,
             @RequestParam(name = "name", value = "name", defaultValue = "none", required = false) String name) {
@@ -39,7 +39,7 @@ public class GreetingTestController {
         }
 
 
-        return Map.of("Greeting:", greeting + "\s" + name, "Country:", country, "Date/Time:", dateTime.format(timeFormatter));
+        return Map.of("greeting", greeting + "\s" + name, "country", country, "dateTime", dateTime.format(timeFormatter));
 
     }
 
